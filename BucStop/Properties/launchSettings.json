@@ -32,7 +32,7 @@
         "ASPNETCORE_URLS": "https://+:443;http://+:80"
       },
       "publishAllPorts": true,
-      "useSSL": false
+      "useSSL": true
     }
   }
 }
