@@ -77,10 +77,27 @@ namespace BucStop.Controllers
                     game.HowTo = info.HowTo;
                     game.DateAdded = info.DateAdded;
                     game.Description = $"{info.Description} \n {info.DateAdded}";
+                    
+                    // If the game is Tetris, have the javascript content set from the MicroService.
+                    // Set the content for the GameInfo object.
+                    if (game.Id == 2)
+                    {
+                        SetTetrisContent(game);
+                    }
                 }
             }
 
             return games;
+        }
+        
+        // Envokes the GetTetrisJS method, which returns the javascript file as a string.
+        // Sets the game object's content to include the JavaScript file, which comes in to this as a string.
+        // Returns the game object back with the content variable populated with the javascript.
+        public async void SetTetrisContent(Game game)
+        {
+            String tetrisJs = await _httpClient.GetTetrisJS();
+            
+            game.Content = tetrisJs;
         }
 
         //Takes the user to the deprecated snake page

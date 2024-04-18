@@ -41,5 +41,26 @@ namespace BucStop
             return new GameInfo[] { };
 
         }
+        
+        // This method returns a string containing the .js file to be embedded into the Tetris game.
+        // It pulls from the MicroService API for Tetris. GET Request for Tetris API.
+        public async Task<string> GetTetrisJS()
+        {
+            try
+            {
+                var responseMessage = await this.client.GetAsync("/tetris");
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return await responseMessage.Content.ReadAsStringAsync();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return string.Empty;
+
+        }
     }
 }

@@ -40,8 +40,15 @@
                             <canvas width="400" height="500" id="game" style="border: 1px solid #000000; background-color: gray"></canvas>
                         }
 
-                            <!-- Embed the game's Javascript here -->
+                        <!-- Embed the game's Javascript here -->
+                        @if (Model.Id == 2)
+                        {
+                            <script> type="text/javascript"@Html.Raw(Model.Content)</script>
+                        }
+                        else
+                        {
                             <script src="@Url.Content(Model.Content)"></script>
+                        }
                     </div>
                 </div>
             </div>
