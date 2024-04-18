@@ -25,6 +25,10 @@ namespace BucStop.Models
         [Required]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+        
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string Content2 { get; set; }
 
         //The author(s) of the game.
         [Required]
