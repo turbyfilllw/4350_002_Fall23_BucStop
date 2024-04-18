@@ -82,7 +82,7 @@ namespace BucStop.Controllers
                     // Set the content for the GameInfo object.
                     if (game.Id == 2)
                     {
-                        game.Content = await _httpClient.GetTetrisJS();
+                        game.Content2 = await _httpClient.GetTetrisJS();
                     }
                 }
             }
